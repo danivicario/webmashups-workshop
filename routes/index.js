@@ -14,7 +14,6 @@ router.get("/pack", (req, res) => {
 });
 
 router.get("/planet-textures", (req, res) => {
-  console.log("a");
   axios.get("https://www.google.com/search?tbm=isch&q=planet+texture").then(googleSearch => {
     const $ = cheerio.load(googleSearch.data);
 
