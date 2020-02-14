@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
   <script src="javascripts/axios.js"></script>
   <script src="javascripts/d3.v4.js"></script>
-  <script src="/javascripts/exoplanets.json"></script>
+  <script src="javascripts/exoplanets.json"></script>
 </head>
 
 <body class="noscroll">
@@ -24,14 +24,13 @@
 
   <script src="javascripts/common.js"></script>
   <script>
-    const URL = "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=json&where=pl_kepflag=1"
-    const URL2 = "http://localhost:3000/javascripts/exoplanets.json"
+    const URL = "http://localhost:3000/javascripts/exoplanets.json"
     let planetTextures;
 
     axios.get("http://localhost:3000/planet-textures")
       .then(planetTexturesPayload => {
         planetTextures = planetTexturesPayload.data
-        return axios.get(URL2)
+        return axios.get(URL)
       })
       .then(exoplanets => {
         exoplanets = cleanExoplanets(exoplanets.data)
