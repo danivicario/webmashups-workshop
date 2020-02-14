@@ -5,6 +5,9 @@
 html, body {
   font-family: 'Oswald', sans-serif; }
 
+.noscroll {
+  overflow: hidden; }
+
 nav {
   display: flex;
   justify-content: space-between;
