@@ -1,14 +1,9 @@
-const URL2 = "http://localhost:3000/javascripts/exoplanets.json";
+const URL = "http://localhost:3000/javascripts/exoplanets.json";
 var diameter = 5000;
 let planetTextures;
 
 axios
-  .get("http://localhost:3000/planet-textures")
-  .then(planetTexturesPayload => {
-    planetTextures = planetTexturesPayload.data;
-
-    return axios.get(URL2);
-  })
+  .get(URL)
   .then(exoplanets => {
     exoplanets = cleanExoplanets(exoplanets.data, 2000);
 
@@ -48,34 +43,14 @@ axios
         return d.r;
       })
       .style("fill", function(d) {
-        // debugger
-        // return `url(${planetTextures[0]})`//
         return `rgba(${randomInt(100, 255)}, ${randomInt(100, 255)}, ${randomInt(100, 255)}, 1)`;
       });
 
     node
       .append("text")
-      .attr("dy", ".3em")
+      .attr("dy", ".1em")
       .style("text-anchor", "middle")
       .text(function(d) {
         return d.data.name;
       });
   });
-
-// Returns a flattened hierarchy containing all leaf nodes under the root.
-function classes(root) {
-  var classes = [];
-
-  function recurse(name, node) {
-    if (node.children)
-      node.children.forEach(function(child) {
-        recurse(node.name, child);
-      });
-    else classes.push({ packageName: name, className: node.name, value: node.size });
-  }
-
-  recurse(null, root);
-  return { children: classes };
-}
-
-d3.select(self.frameElement).style("height", diameter + "px");
