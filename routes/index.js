@@ -14,17 +14,19 @@ router.get("/pack", (req, res) => {
 });
 
 router.get("/planet-textures", (req, res) => {
+  console.log("a");
   axios.get("https://www.google.com/search?tbm=isch&q=planet+texture").then(googleSearch => {
     const $ = cheerio.load(googleSearch.data);
 
-    let planetTextures = [];
+    const planetTextures = [];
 
-    $("#search img").each(planetTexture => {
-      planetTextures.push(
-        $("#search img")
-          .eq(planetTexture)
-          .attr("src")
-      );
+    $("img").each((idx, planetTexture) => {
+      if (
+        planetTexture.attribs.src !== undefined &&
+        planetTexture.attribs.src.indexOf(".gif") === -1
+      ) {
+        planetTextures.push(planetTexture.attribs.src);
+      }
     });
 
     res.json(shuffle(planetTextures));
