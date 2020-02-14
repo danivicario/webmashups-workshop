@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Oswald', sans-serif;
+html,
+body {
+  font-family: "Oswald", sans-serif;
 }
 
 .noscroll {
@@ -42,8 +43,15 @@ section {
   background-size: cover;
   background-repeat: no-repeat;
   margin: 20px;
-  border:1px solid rgba(0, 0, 0, .15);
-  box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
+nav.pack {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 1);
+}
 /*# sourceMappingURL=style.css.map */

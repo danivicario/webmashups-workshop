@@ -48,7 +48,7 @@ axios
 
     node
       .append("text")
-      .attr("dy", ".1em")
+      .attr("dy", ".3em")
       .style("text-anchor", "middle")
       .text(function(d) {
         return d.data.name;
